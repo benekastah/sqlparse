@@ -364,7 +364,10 @@ class TokenList(Token):
 
     def group_tokens(self, grp_cls, tokens, ignore_ws=False):
         """Replace tokens by an instance of *grp_cls*."""
-        idx = self.token_index(tokens[0])
+        if len(tokens) > 0:
+            idx = self.token_index(tokens[0])
+        else:
+            idx = -1
         if ignore_ws:
             while tokens and tokens[-1].is_whitespace():
                 tokens = tokens[:-1]
